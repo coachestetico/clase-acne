@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Clase gratuita · ¿Por qué este acné no mejora? | Coach Estético</title>
+  <meta name="description" content="Clase gratuita con Dianela Draganov: aprende a identificar qué está sosteniendo el cuadro acneico y qué priorizar antes de cambiar de producto o de protocolo.">
+  <meta property="og:title" content="¿Por qué este acné no mejora aunque estés haciendo todo “bien”?">
+  <meta property="og:description" content="Clase gratuita con Dianela Draganov. Elige tu horario: siempre hay una que empieza en minutos.">
+  <meta property="og:image" content="assets/img/banner-clase-acne.jpg">
+  <meta name="theme-color" content="#080506">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="assets/css/estilo.css">
+</head>
+<body>
+
+  <!-- El formulario se usa dos veces (arriba y en el cierre) -->
+  <template id="plantilla-formulario">
+    <form class="formulario" novalidate>
+      <h2>Reserva tu lugar</h2>
+      <p class="bajada" data-datos-clase>Clase gratuita · 1 h 30 · con Dianela Draganov</p>
+      <div class="campos">
+        <div class="campo horario" data-campo="horario">
+          <label data-etiqueta>Elige el horario</label>
+          <button type="button" class="selector-horario" aria-haspopup="listbox" aria-expanded="false">
+            <span class="elegido"><strong></strong><small></small></span>
+            <span class="flecha" aria-hidden="true"></span>
+          </button>
+          <ul class="lista-horarios" role="listbox" hidden></ul>
+          <p class="zona"></p>
+          <p class="aviso">Elige un horario.</p>
+        </div>
+        <div class="campo" data-campo="nombre">
+          <label data-para="nombre">Nombre</label>
+          <input data-entrada="nombre" autocomplete="given-name" maxlength="60" placeholder="Tu nombre">
+          <p class="aviso">Escribe tu nombre.</p>
+        </div>
+        <div class="campo" data-campo="telefono">
+          <label data-para="telefono">WhatsApp</label>
+          <div class="telefono">
+            <select data-entrada="codigo" aria-label="Código de país"></select>
+            <input data-entrada="telefono" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="20" placeholder="Tu número">
+          </div>
+          <p class="aviso">Escribe tu número de WhatsApp.</p>
+        </div>
+        <div class="campo" data-campo="email">
+          <label data-para="email">Correo electrónico</label>
+          <input data-entrada="email" type="email" inputmode="email" autocomplete="email" maxlength="100" placeholder="tucorreo@ejemplo.com">
+          <p class="aviso">Revisa el correo: ahí te llega el acceso.</p>
+        </div>
+        <input class="trampa" data-entrada="web" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="boton ancho" type="submit">¡Quiero mi lugar en la clase!</button>
+      </div>
+      <p class="legal">Te enviamos el acceso y los recordatorios por correo. Al registrarte aceptas recibir información de Coach Estético sobre esta clase y nuestras formaciones.</p>
+    </form>
+  </template>
+
+  <header class="portada">
+    <div class="banner"><img id="banner" src="assets/img/banner-clase-acne.jpg" alt="Clase gratuita: ¿Por qué este acné no mejora aunque estés haciendo todo “bien”?"></div>
+    <h1 class="solo-lector" id="titulo-clase">¿Por qué este acné no mejora aunque estés haciendo todo “bien”?</h1>
+    <div class="formulario-caja" id="registro" data-formulario></div>
+  </header>
+
+  <main>
+    <section class="seccion">
+      <div class="contenedor">
+        <div class="encabezado">
+          <span><span class="etiqueta roja">Clase gratuita</span></span>
+          <h2>¿Cambiaste de ácido, de activo, de protocolo… <span class="crema">y el acné sigue ahí?</span></h2>
+        </div>
+        <div class="texto-largo">
+          <p>No siempre te falta otro tratamiento. A veces te falta entender qué está sosteniendo el cuadro.</p>
+          <p>Detrás de un mismo “acné” puede haber escenarios muy distintos. Si no los diferencias, puedes elegir un tratamiento correcto y aun así equivocarte.</p>
+          <p>En esta clase, Dianela Draganov analiza mini casos reales para que veas cómo leer esa piel y qué priorizar antes de tocar el protocolo.</p>
+        </div>
+        <div class="cta-seccion"><a class="boton" href="#registro" data-ir-registro>¡Quiero mi lugar en la clase!</a></div>
+      </div>
+    </section>
+
+    <section class="seccion oscura vas-a-ver">
+      <div class="contenedor dos-columnas">
+        <figure class="visual"><img src="assets/img/banner-clase-acne.jpg" alt="Profesional evaluando una piel con acné" loading="lazy"></figure>
+        <div>
+          <div class="titulos">
+            <span><span class="etiqueta">Lo que vas a ver</span></span>
+            <h2>Un mismo acné, <span class="crema">seis escenarios distintos</span></h2>
+          </div>
+          <ol class="escenarios">
+            <li><span class="numero">01</span><span>Inflamación activa</span></li>
+            <li><span class="numero">02</span><span>Barrera alterada</span></li>
+            <li><span class="numero">03</span><span>Comedones + sensibilidad</span></li>
+            <li><span class="numero">04</span><span>Manchas postinflamatorias</span></li>
+            <li><span class="numero">05</span><span>Exceso de tratamientos</span></li>
+            <li><span class="numero">06</span><span>Domiciliario incorrecto</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="contenedor">
+        <div class="encabezado">
+          <span><span class="etiqueta">Para quién es</span></span>
+          <h2>Esta clase es para ti si…</h2>
+        </div>
+        <ul class="para-ti">
+          <li>Conoces tratamientos, activos y aparatología, pero dudas cuál elegir.</li>
+          <li>Aplicas bien los protocolos y aun así algunas pacientes no evolucionan.</li>
+          <li>Frente a una piel con acné, manchas y sensibilidad a la vez, no sabes por dónde empezar.</li>
+          <li>Cambias de producto o de protocolo cada vez que la piel no responde.</li>
+          <li>Quieres dejar de trabajar sesión por sesión y armar un plan con orden.</li>
+        </ul>
+        <div class="cta-seccion"><a class="boton" href="#registro" data-ir-registro>¡Me reconozco, quiero mi lugar!</a></div>
+      </div>
+    </section>
+
+    <section class="seccion oscura">
+      <div class="contenedor dos-columnas docente">
+        <div class="foto-docente"><img id="foto-docente" src="assets/img/dianela.png" alt="Dianela Draganov" loading="lazy"></div>
+        <div class="datos">
+          <span class="rol">Quién te enseña</span>
+          <h2>Dianela Draganov</h2>
+          <p>Fundadora y directora de Coach Estético. Desde 2014 forma esteticistas, cosmetólogas y cosmiatras con una idea simple: ética, coherencia y sentido común.</p>
+          <p>En sus clases no hay recetas para memorizar: hay criterio para decidir qué necesita cada piel y en qué orden.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion cierre">
+      <div class="contenedor dos-columnas">
+        <div class="cierre-texto">
+          <span class="etiqueta roja">Clase gratuita</span>
+          <p class="frase">Una piel puede necesitar muchas cosas. <em>El criterio está en saber qué necesita primero.</em></p>
+          <ul class="datos-rapidos">
+            <li>Sin costo</li>
+            <li data-duracion>1 h 30</li>
+            <li>Siempre hay una en minutos</li>
+          </ul>
+        </div>
+        <div class="formulario-caja" data-formulario></div>
+      </div>
+    </section>
+
+    <section class="seccion oscura">
+      <div class="contenedor">
+        <div class="encabezado"><h2>Preguntas frecuentes</h2></div>
+        <div class="preguntas">
+          <details><summary>¿Tiene costo?</summary><p>No, la clase es gratuita.</p></details>
+          <details><summary>¿Cuánto dura?</summary><p data-duracion-texto>Alrededor de 1 h 30.</p></details>
+          <details><summary>¿Cómo entro?</summary><p>Después de registrarte te llega a tu correo el link de acceso. También te escribimos 1 hora antes y cuando empieza.</p></details>
+          <details><summary>¿Y si no llego a horario?</summary><p>La clase empieza puntual. Si llegas más de 15 minutos tarde, desde el mismo link puedes elegir otro horario.</p></details>
+          <details><summary>¿A qué hora es en mi país?</summary><p>Los horarios se muestran solos en tu hora local, estés donde estés.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">© 2026 Coach Estético. Todos los derechos reservados.</div>
+  </footer>
+
+  <a class="wsp-flotante" data-wsp href="#" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.41Z"/></svg>
+  </a>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/comun.js"></script>
+  <script src="assets/js/registro.js"></script>
+</body>
+</html>

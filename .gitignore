@@ -1,0 +1,9 @@
+# Solo se publica la página: las tres páginas y assets/.
+# Lo demás (transcripción, fotos originales, planilla, notas) queda en la PC.
+/*
+!/.gitignore
+!/.nojekyll
+!/index.html
+!/confirmacion.html
+!/sala.html
+!/assets/

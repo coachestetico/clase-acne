@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Clase gratuita | Coach Estético</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#080506">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@800&display=swap">
+  <link rel="stylesheet" href="assets/css/estilo.css">
+</head>
+<body class="sala-pagina">
+
+  <div class="contenedor barra" style="max-width: 1480px;">
+    <a class="marca" href="index.html">Coach <span>Estético</span></a>
+    <span class="etiqueta">Clase gratuita</span>
+  </div>
+
+  <main class="sala">
+    <section>
+      <div class="pantalla" id="pantalla">
+        <div id="video-lugar"></div>
+        <div class="bloqueo" aria-hidden="true"></div>
+
+        <!-- Antes de empezar -->
+        <div class="capa con-fondo" id="capa-espera" hidden>
+          <div class="contenido">
+            <span class="etiqueta roja">Tu clase empieza en</span>
+            <div class="reloj" id="reloj">00:00:00</div>
+            <p id="hora-inicio"></p>
+            <button class="boton crema-fondo" id="activar-sonido" type="button">Activar el sonido</button>
+            <p class="sonido-ok" id="sonido-ok" hidden>Sonido activado. La clase arranca sola: deja esta pestaña abierta.</p>
+          </div>
+        </div>
+
+        <!-- Si el navegador arrancó el video sin sonido -->
+        <div class="capa" id="capa-sonido" hidden>
+          <div class="contenido">
+            <h2>La clase ya empezó</h2>
+            <button class="boton" id="poner-sonido" type="button">Tocar para escuchar</button>
+          </div>
+        </div>
+
+        <!-- Llegó tarde o la clase terminó -->
+        <div class="capa con-fondo" id="capa-otro-horario" hidden>
+          <div class="contenido">
+            <h2 id="otro-titulo">Esta clase empezó hace más de 15 minutos</h2>
+            <p id="otro-texto">Para que la aproveches desde el principio, elige otro horario:</p>
+            <div class="horarios-nuevos" id="horarios-nuevos"></div>
+          </div>
+        </div>
+
+        <!-- Sin datos en el link -->
+        <div class="capa con-fondo" id="capa-sin-datos" hidden>
+          <div class="contenido">
+            <h2>No encontramos tu horario</h2>
+            <p>Entra desde el link que te llegó por correo, o elige un horario nuevo.</p>
+            <a class="boton" href="index.html">Elegir horario</a>
+          </div>
+        </div>
+
+        <!-- Al terminar -->
+        <div class="capa" id="capa-fin" hidden>
+          <div class="contenido">
+            <span class="etiqueta roja">Gracias por estar</span>
+            <h2>La clase terminó</h2>
+            <p>Si te quedó alguna duda sobre el Bootcamp, escríbenos: te respondemos por WhatsApp.</p>
+          </div>
+        </div>
+
+        <!-- El video no cargó -->
+        <div class="capa con-fondo" id="capa-error" hidden>
+          <div class="contenido">
+            <h2>No pudimos cargar la clase</h2>
+            <p>Revisa tu conexión y vuelve a cargar la página. Si sigue sin funcionar, escríbenos.</p>
+            <button class="boton" type="button" onclick="location.reload()">Volver a cargar</button>
+          </div>
+        </div>
+
+        <div class="chip-oferta" id="chip-oferta" hidden><a class="mini rojo" id="chip-link" href="#" target="_blank" rel="noopener">Inscribirme al Bootcamp</a></div>
+        <div class="botones-pantalla">
+          <button class="mini" id="pantalla-completa" type="button" hidden>Pantalla completa</button>
+        </div>
+      </div>
+
+      <div class="titulo-sala">
+        <h1 id="titulo-clase"></h1>
+        <p id="docente-clase"></p>
+      </div>
+    </section>
+
+    <aside class="lateral" aria-label="Información de la clase">
+      <!-- Antes de la oferta: solo la clase -->
+      <div class="panel-clase" id="panel-clase">
+        <span class="marca">Coach <span>Estético</span></span>
+        <span><span class="etiqueta roja">Clase gratuita</span></span>
+        <p class="con" id="panel-docente"></p>
+        <ul class="consejos">
+          <li>Ten a mano dónde anotar: vas a ver casos reales.</li>
+          <li>Usa auriculares o buen volumen.</li>
+          <li>Quédate hasta el final.</li>
+        </ul>
+      </div>
+
+      <!-- Desde la oferta -->
+      <div class="logo-bootcamp" id="logo-bootcamp" hidden>
+        <span class="palabra">BOOTCAMP</span>
+        <span class="raya"></span>
+        <span class="nombre">¿Qué hago <span>con esta piel?</span></span>
+        <span class="fechas" id="fechas"></span>
+      </div>
+
+      <div class="oferta" id="oferta" hidden>
+        <span><span class="etiqueta roja">Inscripciones abiertas</span></span>
+        <div class="precios">
+          <span class="antes">Valor: <s id="precio-lista"></s></span>
+          <span class="ahora" id="precio"></span>
+          <span class="cupos" id="cupos"></span>
+        </div>
+        <ul id="incluye"></ul>
+        <div class="botones">
+          <a class="boton ancho" id="pagar-mp" href="#" target="_blank" rel="noopener" hidden>Inscribirme con Mercado Pago</a>
+          <a class="boton ancho" id="pagar-hotmart" href="#" target="_blank" rel="noopener" hidden>Inscribirme ahora</a>
+          <a class="boton ancho wsp" id="wsp" href="#" target="_blank" rel="noopener">¿Dudas? Escríbenos por WhatsApp</a>
+          <button class="otro-pais" id="otro-pais" type="button"></button>
+        </div>
+        <p class="nota" id="nota-pago"></p>
+        <p class="nota alumnas" id="nota-alumnas"></p>
+      </div>
+    </aside>
+  </main>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/comun.js"></script>
+  <script src="assets/js/sala.js"></script>
+</body>
+</html>
