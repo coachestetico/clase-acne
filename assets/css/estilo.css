@@ -171,7 +171,7 @@ p { margin: 0; }
 
 /* Lo que vas a ver: foto al costado y lista corta */
 .visual { margin: 0; border-radius: 20px; overflow: hidden; aspect-ratio: 4 / 5; max-width: 460px; width: 100%; justify-self: center; border: 1px solid var(--linea); }
-.visual img { width: 100%; height: 100%; object-fit: cover; object-position: 51% 50%; }
+.visual img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
 .vas-a-ver .titulos { display: grid; gap: 16px; margin-bottom: 26px; }
 .escenarios { display: grid; margin: 0; padding: 0; list-style: none; }
 .escenarios li {
@@ -227,8 +227,8 @@ body.confirmacion { background: #ece6dd; color: #3d342e; min-height: 100vh; disp
   box-shadow: 0 40px 90px rgba(40, 25, 15, 0.22);
   display: grid; gap: 22px; justify-items: center; text-align: center;
 }
-.marca-chica { font: 800 1rem var(--sans); color: #14100e; text-decoration: none; }
-.marca-chica span { color: var(--rojo); }
+.marca-chica { display: inline-flex; }
+.marca-chica img { height: 56px; width: auto; }
 .icono-ok { width: 76px; height: 76px; border-radius: 50%; background: #f8e1e1; display: grid; place-items: center; }
 .icono-ok svg { width: 34px; height: 34px; stroke: var(--rojo); }
 .tarjeta-confirmacion h1 { color: #14100e; font-size: clamp(1.8rem, 4.6vw, 2.5rem); }
@@ -266,8 +266,10 @@ body.confirmacion { background: #ece6dd; color: #3d342e; min-height: 100vh; disp
 
 /* ---------- Sala ---------- */
 .barra { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; border-bottom: 1px solid var(--linea); }
-.marca { font: 800 1.1rem var(--sans); color: var(--blanco); text-decoration: none; }
+.marca { font: 800 1.1rem var(--sans); color: var(--blanco); text-decoration: none; display: inline-flex; }
 .marca span { color: var(--rojo-claro); }
+.marca img { height: 46px; width: auto; }
+.logo-panel { height: 58px; width: auto; }
 .sala-pagina { min-height: 100vh; display: grid; grid-template-rows: auto 1fr; }
 .sala { display: grid; gap: 20px; align-content: start; padding-block: 20px 40px; width: 100%; max-width: 1480px; margin-inline: auto; padding-inline: 16px; }
 @media (min-width: 1024px) { .sala { grid-template-columns: minmax(0, 1fr) 360px; gap: 24px; padding-inline: 24px; } }
@@ -313,7 +315,7 @@ body.confirmacion { background: #ece6dd; color: #3d342e; min-height: 100vh; disp
 .logo-bootcamp .nombre { font-family: var(--marca); font-weight: 800; font-size: 1.9rem; line-height: 1.02; color: var(--blanco); text-transform: uppercase; }
 .logo-bootcamp .nombre span { color: var(--crema); display: block; }
 .logo-bootcamp .fechas { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--suave); }
-.logo-bootcamp img { max-width: 240px; }
+.logo-bootcamp img { width: 100%; max-width: 280px; height: auto; }
 .panel-clase { display: grid; gap: 14px; justify-items: start; }
 .panel-clase .con { color: var(--texto); font-size: 0.95rem; }
 .consejos { margin: 0; padding: 14px 0 0; list-style: none; display: grid; gap: 10px; border-top: 1px solid var(--linea); width: 100%; font-size: 0.9rem; color: var(--suave); }

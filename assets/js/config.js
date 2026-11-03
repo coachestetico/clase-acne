@@ -11,7 +11,7 @@ const CONFIG = {
   /* Banner de la clase: ya trae el título y la foto. La parte derecha tiene que quedar libre para el formulario. */
   banner: "assets/img/banner-clase-acne.jpg",
   fotoDocente: "assets/img/dianela.png",
-  logoBootcamp: "",               // opcional: imagen del logo del Bootcamp para la sala; vacío = logo armado con texto
+  logoBootcamp: "assets/img/logo-bootcamp.png", // vacío = logo armado con texto
 
   horarios: {
     cadaMinutos: 10,              // siempre hay una clase que empieza en menos de 10–13 minutos

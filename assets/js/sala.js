@@ -27,7 +27,8 @@
     const img = new Image();
     img.src = CONFIG.logoBootcamp;
     img.alt = `Bootcamp ${oferta.producto}`;
-    $("logo-bootcamp").replaceChildren(img);
+    $("logo-bootcamp").querySelectorAll(".palabra, .raya, .nombre").forEach(el => el.remove());
+    $("logo-bootcamp").prepend(img);
   }
   if (CONFIG.banner) document.querySelectorAll(".capa.con-fondo").forEach(c => { c.style.backgroundImage = `url("${CONFIG.banner}")`; });
 
