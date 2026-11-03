@@ -38,8 +38,6 @@ const CONFIG = {
   oferta: {
     producto: "¿Qué hago con esta piel?",
     fechas: "24, 25 y 26 de noviembre · en vivo por Zoom",
-    precioLista: "245 USD",
-    precio: "125 USD",
     cupos: 40,
     incluye: [
       "Clase 0 nivelatoria apenas te inscribes",
@@ -48,9 +46,34 @@ const CONFIG = {
       "Grupo de WhatsApp de acompañamiento hasta el 14/12"
     ],
     hotmart: "https://pay.hotmart.com/F108130345D?off=khch8zx2", // link solo para esta página
-    mercadoPago: "",              // FALTA: link de Mercado Pago para Argentina
-    precioAR: "",                 // FALTA: monto en pesos, ej. "$ 180.000"
     whatsapp: "https://wa.link/j8g83f",
+
+    /* Precio según el país de la persona (sale del código de su WhatsApp o de su zona horaria).
+       Si a una región le falta el precio o el link, ve la de dólares. */
+    regiones: {
+      USD: {
+        precio: "125 USD", lista: "245 USD", pago: "hotmart",
+        boton: "Inscribirme ahora · 125 USD",
+        nota: "Pago seguro por Hotmart. El acceso te llega al correo."
+      },
+      EUR: {                      // Europa: es el precio que muestra Hotmart para España
+        precio: "119 €", lista: "233 €", pago: "hotmart",
+        boton: "Inscribirme ahora · 119 €",
+        nota: "Pago seguro por Hotmart. El acceso te llega al correo."
+      },
+      AR: {
+        precio: "", lista: "",    // FALTA: precio en pesos, ej. "$ 180.000"
+        pago: "",                 // FALTA: link de Mercado Pago
+        boton: "Inscribirme con Mercado Pago",
+        nota: "Después de pagar, envía el comprobante por WhatsApp y te damos el acceso."
+      },
+      VE: {
+        precio: "", lista: "",    // FALTA: precio en bolívares, ej. "113.000 Bs"
+        pago: "whatsapp",         // se paga por Pago Móvil: los datos se pasan por WhatsApp
+        boton: "Quiero pagar en bolívares",
+        nota: "Te pasamos los datos de Pago Móvil por WhatsApp."
+      }
+    },
     notaAlumnas: "¿Ya eres alumna de Coach Estético? Tu precio es 99 USD: escríbenos por WhatsApp. Si eres miembro activo de LIFE+ o Lifetime, ya lo tienes incluido."
   },
 

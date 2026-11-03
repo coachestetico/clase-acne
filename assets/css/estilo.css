@@ -158,6 +158,22 @@ p { margin: 0; }
 .zona { font-size: 0.78rem; color: var(--suave); margin-top: 5px; }
 .legal { font-size: 0.76rem; color: var(--suave); margin-top: 12px; line-height: 1.45; }
 
+/* Aviso de único turno */
+.aviso-turno {
+  position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 16px;
+  background: rgba(4, 2, 2, 0.78); backdrop-filter: blur(4px);
+}
+.aviso-caja {
+  width: 100%; max-width: 440px; display: grid; gap: 14px; justify-items: start;
+  background: #140e0d; border: 1px solid var(--linea-fuerte); border-radius: 20px; padding: 28px 24px 24px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6); animation: aparecer 0.25s ease-out;
+}
+.aviso-caja h2 { font-size: 1.6rem; }
+.aviso-caja p { color: var(--texto); font-size: 1rem; }
+.aviso-caja strong { color: var(--blanco); }
+.aviso-horario { width: 100%; padding: 12px 16px; border-radius: 12px; background: var(--campo); color: var(--campo-texto) !important; font-weight: 700; font-size: 1.05rem; }
+.aviso-botones { display: grid; gap: 10px; width: 100%; margin-top: 4px; }
+
 /* ---------- Secciones ---------- */
 .seccion { padding-block: clamp(56px, 8vw, 100px); border-top: 1px solid var(--linea); }
 .seccion.oscura { background: var(--negro-2); }

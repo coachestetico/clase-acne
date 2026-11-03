@@ -6,7 +6,7 @@
   document.querySelectorAll("[data-wsp]").forEach(a => { a.href = CONFIG.oferta.whatsapp; });
   $("titulo-clase").textContent = CONFIG.clase.titulo;
   $("docente").textContent = CONFIG.clase.docente;
-  $("paso-duracion").textContent = `Empieza puntual y dura alrededor de ${textoDuracion(CONFIG.clase.duracionMin)}. Si llegas más de ${CONFIG.sala.toleranciaMin} minutos tarde, desde el mismo link eliges otro horario.`;
+  $("paso-duracion").textContent = `Empieza puntual, dura alrededor de ${textoDuracion(CONFIG.clase.duracionMin)} y se transmite una sola vez: no se puede pausar ni volver a ver. Si no entras en tu turno, te la pierdes.`;
 
   if (!inicio) {
     $("saludo").textContent = "No encontramos tu horario";
@@ -56,7 +56,7 @@
 
     if (falta > 0) $("falta").textContent = textoFalta(inicio);
     else if (yaCasi) $("falta").textContent = "Ya empezó";
-    else $("falta").textContent = "Esta clase ya empezó: puedes elegir otro horario";
+    else $("falta").textContent = "Esta clase ya empezó";
   }
   actualizar();
   setInterval(actualizar, 15 * 1000);

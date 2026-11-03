@@ -32,33 +32,40 @@
   }
   if (CONFIG.banner) document.querySelectorAll(".capa.con-fondo").forEach(c => { c.style.backgroundImage = `url("${CONFIG.banner}")`; });
 
-  $("precio-lista").textContent = oferta.precioLista;
-  $("precio").textContent = oferta.precio;
   $("cupos").textContent = `Solo para los primeros ${oferta.cupos} lugares`;
   oferta.incluye.forEach(texto => { const li = document.createElement("li"); li.textContent = texto; $("incluye").appendChild(li); });
   $("wsp").href = oferta.whatsapp;
   $("nota-alumnas").textContent = oferta.notaAlumnas || "";
 
-  /* ---- Pagos: Argentina con Mercado Pago, el resto con Hotmart ---- */
-  let pagoArgentina = pais === "AR" && Boolean(oferta.mercadoPago);
-  function pintarPagos() {
-    $("pagar-mp").href = oferta.mercadoPago || "#";
-    $("pagar-mp").textContent = oferta.precioAR ? `Inscribirme con Mercado Pago · ${oferta.precioAR}` : "Inscribirme con Mercado Pago";
-    $("pagar-hotmart").href = oferta.hotmart;
-    $("pagar-hotmart").textContent = `Inscribirme ahora · ${oferta.precio}`;
-    $("pagar-mp").hidden = !pagoArgentina;
-    $("pagar-hotmart").hidden = pagoArgentina;
-    $("otro-pais").hidden = !oferta.mercadoPago;
-    $("otro-pais").textContent = pagoArgentina ? "¿Pagas desde otro país? Paga con tarjeta internacional" : "¿Estás en Argentina? Paga con Mercado Pago";
-    $("nota-pago").textContent = pagoArgentina
-      ? "Después de pagar, envía el comprobante por WhatsApp y te damos el acceso."
-      : "Pago seguro por Hotmart. El acceso te llega al correo.";
-    $("chip-link").href = pagoArgentina ? oferta.mercadoPago : oferta.hotmart;
+  /* ---- Precio y pago según el país: Argentina en pesos, Venezuela en bolívares, Europa en euros, el resto en dólares ---- */
+  const regiones = oferta.regiones;
+  const PAISES_EURO = ["ES", "IT", "PT", "FR", "DE", "AT", "BE", "NL", "IE", "GR", "FI", "LU", "MT", "CY", "SK", "SI", "EE", "LV", "LT", "HR", "AD"];
+  const completa = r => Boolean(regiones[r] && regiones[r].precio && regiones[r].pago);
+  function regionDe(p) {
+    if (p === "AR" || p === "VE") return p;
+    if (PAISES_EURO.includes(p) || ((!p || p === "XX") && zonaLocal().startsWith("Europe/"))) return "EUR";
+    return "USD";
   }
-  $("otro-pais").addEventListener("click", () => { pagoArgentina = !pagoArgentina; pintarPagos(); });
+  const regionPropia = completa(regionDe(pais)) ? regionDe(pais) : "USD";
+  let region = regionPropia;
+  const linkDePago = r => ({ hotmart: oferta.hotmart, whatsapp: oferta.whatsapp })[regiones[r].pago] || regiones[r].pago;
+
+  function pintarPagos() {
+    const r = regiones[region];
+    $("precio-lista").textContent = r.lista;
+    $("precio-lista").parentElement.hidden = !r.lista;
+    $("precio").textContent = r.precio;
+    $("pagar").href = linkDePago(region);
+    $("pagar").textContent = r.boton;
+    $("nota-pago").textContent = r.nota;
+    $("chip-link").href = linkDePago(region);
+    $("otro-pais").hidden = regionPropia === "USD";
+    $("otro-pais").textContent = region === "USD" ? `Volver a mi precio (${regiones[regionPropia].precio})` : "¿Pagas desde otro país? Ver el precio en dólares";
+  }
+  $("otro-pais").addEventListener("click", () => { region = region === "USD" ? regionPropia : "USD"; pintarPagos(); });
   pintarPagos();
-  [["pagar-mp", "clic_mercadopago"], ["pagar-hotmart", "clic_hotmart"], ["wsp", "clic_whatsapp"], ["chip-link", "clic_chip"]]
-    .forEach(([boton, evento]) => $(boton).addEventListener("click", () => registrarEvento(evento, { segundo: segundoActual() })));
+  [["pagar", "clic_pago"], ["wsp", "clic_whatsapp"], ["chip-link", "clic_chip"]]
+    .forEach(([boton, evento]) => $(boton).addEventListener("click", () => registrarEvento(evento, { segundo: segundoActual(), region })));
 
   if (!inicio) { mostrar("capa-sin-datos"); return; }
 
@@ -252,7 +259,7 @@
   registrarEvento("entro", { minutos: Math.round(transcurrido / MINUTO) });
 
   if (transcurrido > tolerancia) {
-    ofrecerOtroHorario(`Esta clase empezó hace más de ${CONFIG.sala.toleranciaMin} minutos`, "Para que la aproveches desde el principio, elige otro horario:");
+    ofrecerOtroHorario("Te perdiste tu turno", `La clase empezó hace más de ${CONFIG.sala.toleranciaMin} minutos. Por única vez, puedes anotarte en otro horario:`);
     return;
   }
 

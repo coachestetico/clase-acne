@@ -12,6 +12,24 @@
   document.querySelectorAll("[data-duracion-texto]").forEach(el => { el.textContent = `Alrededor de ${duracion}.`; });
   document.querySelectorAll("[data-wsp]").forEach(a => { a.href = CONFIG.oferta.whatsapp; });
 
+  /* Aviso de único turno: resuelve "aceptar" o "cambiar" */
+  function avisoTurno(inicio) {
+    const aviso = $("aviso-turno");
+    $("aviso-horario").textContent = `Tu turno: ${textoFechaLarga(inicio)} (tu hora local)`;
+    aviso.hidden = false;
+    $("aviso-aceptar").focus();
+    return new Promise(res => {
+      const cerrar = respuesta => {
+        aviso.hidden = true;
+        $("aviso-aceptar").onclick = $("aviso-cambiar").onclick = aviso.onkeydown = null;
+        res(respuesta);
+      };
+      $("aviso-aceptar").onclick = () => cerrar("aceptar");
+      $("aviso-cambiar").onclick = () => cerrar("cambiar");
+      aviso.onkeydown = e => { if (e.key === "Escape") cerrar("cambiar"); };
+    });
+  }
+
   function origen() {
     const p = new URLSearchParams(location.search);
     const datos = {};
@@ -41,6 +59,7 @@
 
     /* ---- Horarios ---- */
     let elegida = null;
+    let aceptada = null; // horario para el que ya vio el aviso de único turno
     function pintarHorarios() {
       const ahora = Date.now();
       const clases = proximasClases(ahora);
@@ -75,12 +94,18 @@
       }
     }
 
-    function elegir(li) {
+    async function elegir(li) {
       elegida = Number(li.dataset.inicio);
       campo("horario").classList.remove("error");
       abrirLista(false);
       pintarHorarios();
-      selector.focus();
+      if (await avisoTurno(elegida) === "aceptar") {
+        aceptada = elegida;
+        entrada("nombre").focus();
+      } else {
+        abrirLista(true);
+        selector.focus();
+      }
     }
 
     selector.addEventListener("click", () => abrirLista(lista.hidden));
@@ -137,7 +162,13 @@
       if (ok.includes(false)) { formulario.querySelector(".error input, .error button")?.focus(); return; }
 
       /* Si el horario "en minutos" ya pasó mientras completaba, se pasa al siguiente. */
-      if (elegida - Date.now() < MINUTO) elegida = proximasClases()[0].inicio;
+      if (elegida - Date.now() < MINUTO) { elegida = proximasClases()[0].inicio; pintarHorarios(); }
+
+      /* Antes de reservar tiene que ver el aviso de único turno para este horario */
+      if (aceptada !== elegida) {
+        if (await avisoTurno(elegida) !== "aceptar") { abrirLista(true); selector.focus(); return; }
+        aceptada = elegida;
+      }
 
       const boton = formulario.querySelector('button[type="submit"]');
       boton.disabled = true;
