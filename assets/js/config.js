@@ -46,7 +46,7 @@ const CONFIG = {
       "Grupo de WhatsApp de acompañamiento hasta el 14/12"
     ],
     hotmart: "https://pay.hotmart.com/F108130345D?off=khch8zx2", // link solo para esta página
-    whatsapp: "https://wa.link/j8g83f",
+    whatsapp: "https://wa.link/1c5v5w", // botón flotante y "¿Dudas?" de la oferta (salvo Argentina y Venezuela)
 
     /* Precio según el país de la persona (sale del código de su WhatsApp o de su zona horaria).
        Si a una región le falta el precio o el link, ve la de dólares. */
@@ -62,16 +62,18 @@ const CONFIG = {
         nota: "Pago seguro por Hotmart. El acceso te llega al correo."
       },
       AR: {
-        precio: "", lista: "",    // FALTA: precio en pesos, ej. "$ 180.000"
-        pago: "",                 // FALTA: link de Mercado Pago
-        boton: "Inscribirme con Mercado Pago",
-        nota: "Después de pagar, envía el comprobante por WhatsApp y te damos el acceso."
+        precio: "$ 195.000", lista: "245 USD",
+        pago: "https://mpago.li/2raEe9D",
+        boton: "Inscribirme con Mercado Pago · $ 195.000",
+        nota: "Hasta 3 cuotas sin interés. Después de pagar, envía el comprobante por WhatsApp y te damos el acceso.",
+        dudas: "https://wa.link/x5jiat"
       },
       VE: {
-        precio: "", lista: "",    // FALTA: precio en bolívares, ej. "113.000 Bs"
-        pago: "whatsapp",         // se paga por Pago Móvil: los datos se pasan por WhatsApp
+        precio: "111.500 Bs", lista: "245 USD",
+        pago: "https://wa.link/0t6247", // se paga por Pago Móvil: los datos se pasan por WhatsApp
         boton: "Quiero pagar en bolívares",
-        nota: "Te pasamos los datos de Pago Móvil por WhatsApp."
+        nota: "Te pasamos los datos de Pago Móvil por WhatsApp.",
+        dudas: "https://wa.link/0t6247"
       }
     },
     notaAlumnas: "¿Ya eres alumna de Coach Estético? Tu precio es 99 USD: escríbenos por WhatsApp. Si eres miembro activo de LIFE+ o Lifetime, ya lo tienes incluido."
@@ -79,5 +81,5 @@ const CONFIG = {
 
   /* URL de la aplicación web de Apps Script que guarda los registros y manda los emails (ver LEEME.md).
      Vacía: la página funciona igual, pero no guarda nada. */
-  registroUrl: ""
+  registroUrl: "https://script.google.com/macros/s/AKfycbxfqI35QIK0DKLtMXlmpfUvZPBi0SxNVem2_JQcCsEHRVm-PxgkdXvByV5KlHIm5Ux1/exec"
 };

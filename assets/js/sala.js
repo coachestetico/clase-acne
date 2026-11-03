@@ -58,6 +58,7 @@
     $("pagar").href = linkDePago(region);
     $("pagar").textContent = r.boton;
     $("nota-pago").textContent = r.nota;
+    $("wsp").href = r.dudas || oferta.whatsapp;
     $("chip-link").href = linkDePago(region);
     $("otro-pais").hidden = regionPropia === "USD";
     $("otro-pais").textContent = region === "USD" ? `Volver a mi precio (${regiones[regionPropia].precio})` : "¿Pagas desde otro país? Ver el precio en dólares";
